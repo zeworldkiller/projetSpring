@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section  layout:fragment="text">
+    <h1 class="m-0">Suppression Approvisionnement</h1>
+</section>
+<section layout:fragment="content" >
+    <div class="d-flex justify-content-center mt-3">
+
+
+        <div class="col-9">
+            <div class="card card-danger">
+                <div class="card-header">
+                    <h3 class="card-title">Supprimer  un Approvisionnement:</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form th:action="@{/approvisionnement/destroy}" th:object="${oneApprovisionnement}" method="post">
+                    <input type="hidden"  th:field="*{articleId}"/>
+                    <input type="hidden"  th:field="*{id}"/>
+                    <input type="hidden"  th:field="*{dateAppro}"/>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="designation">Libellé :</label>
+                            <input id="designation" type="text" class="form-control" th:field="${oneApprovisionnement.article.libelle}" >
+                        </div>
+                        <div class="form-group">
+                            <label for="qteAppro">Quantité :</label>
+                            <input id="qteAppro" type="number" class="form-control" th:field="*{qteAppro}">
+                        </div>
+
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-danger">Annuler cet Approvisionnement</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

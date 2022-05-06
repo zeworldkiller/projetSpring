@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       layout:decorate="~{layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section  layout:fragment="text">
+    <h1 class="m-0">Creation de Catégorie</h1>
+</section>
+<section layout:fragment="content" >
+    <div class="d-flex justify-content-center mt-3">
+
+
+  <div class="col-9">
+      <div class="card card-primary">
+          <div class="card-header">
+              <h3 class="card-title">Enregistrement de Catégorie :</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form th:action="@{/categorie/store}" method="post">
+              <div class="card-body">
+                  <div class="form-group">
+                      <label for="designation">Désignation</label>
+                      <input id="designation" type="text" class="form-control" name="designation" placeholder="la désignation de votre catégorie :">
+                  </div>
+
+              </div>
+              <!-- /.card-body -->
+
+              <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Enregistrement</button>
+              </div>
+          </form>
+      </div>
+  </div>
+    </div>
+</section>
+</body>
+</html>

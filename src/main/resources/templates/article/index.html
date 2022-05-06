@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section  layout:fragment="text">
+    <h1 class="m-0">Liste Des Articles</h1>
+</section>
+<section layout:fragment="content">
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>libellé</th>
+                <th>catégorie</th>
+                <th>prix</th>
+                <th>Quantité en stock</th>
+                <th>Quantité Seuil</th>
+                <th>Date de création</th>
+                <th>Actions</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="article:${articles}">
+                <td th:text="${article.libelle}"/>
+                <td th:text="${article.categorie.designation}"></td>
+                <td th:text="${article.prix}"/>
+                <td th:text="${article.qteStock}"/>
+                <td th:text="${article.qteSeuil}" class="text text-danger"/>
+                <td th:text="${article.dateCreation}"/>
+                <td class="d-flex justify-content-between">
+                    <a th:href="@{/article/edit/{id}(id=${article.id})}" class="btn btn-primary btn-lg">Modifier </a>
+                    <a th:href="@{/article/delete/{id}(id=${article.id})}" class="btn btn-danger btn-lg">Supprimer </a>
+                    <a th:href="@{/approvisionnement/approvisionner/{id}(id=${article.id})}" class="btn btn-success btn-lg">Approvisionner</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th>libellé</th>
+                <th>catégorie</th>
+                <th>prix</th>
+                <th>Quantité en stock</th>
+                <th>Quantité Seuil</th>
+                <th>Date de création</th>
+                <th>Actions</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</section>
+<section layout:fragment="script">
+    <script th:src="@{/admin/plugins/datatables/jquery.dataTables.min.js}"></script>
+    <script th:src="@{/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js}"></script>
+    <script th:src="@{/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js}"></script>
+    <script th:src="@{/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>
+    <script th:src="@{/admin/plugins/datatables-buttons/js/dataTables.buttons.min.js}"></script>
+    <script th:src="@{/admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js}"></script>
+    <script th:src="@{/admin/plugins/jszip/jszip.min.js}"></script>
+    <script th:src="@{/admin/plugins/pdfmake/pdfmake.min.js}"></script>
+    <script th:src="@{/admin/plugins/pdfmake/vfs_fonts.js}"></script>
+    <script th:src="@{/admin/plugins/datatables-buttons/js/buttons.html5.min.js}"></script>
+    <script th:src="@{/admin/plugins/datatables-buttons/js/buttons.print.min.js}"></script>
+    <script th:src="@{/admin/plugins/datatables-buttons/js/buttons.colVis.min.js}"></script>
+
+    <!-- Page specific script -->
+    <script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+</section>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<section  layout:fragment="text">
+  <h1 class="m-0">ACCUEIL</h1>
+</section>
+<section layout:fragment="content">
+  <div class="row">
+    <div class="col-lg-4 col-7">
+      <!-- small box -->
+      <div class="small-box bg-primary">
+        <div class="inner">
+          <h3 th:text="${i}"/>
+
+          <p>Nombre d'Article vendu aujourdhui:</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-bag"></i>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-4 col-7">
+      <!-- small box -->
+      <div class="small-box bg-warning">
+        <div class="inner">
+          <h3 th:text="${total}"/>
+
+          <p>Somme totale des Ventes</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-stats-bars"></i>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- ./col -->
+    <!-- ./col -->
+
+    <div class="col-lg-4 col-7">
+      <!-- small box -->
+      <div class="small-box bg-danger">
+        <div class="inner">
+          <h3 th:text="${Aappro}"/>
+
+          <p>Nombre d'article presque en rupture:</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-stats-bars"></i>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row">
+<!--    <div class="col-md-6">-->
+<!--      <div class="card card-success" >-->
+<!--        <div class="card-header">-->
+<!--          <h3 class="card-title">Articles</h3>-->
+
+<!--          <div class="card-tools">-->
+<!--            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">-->
+<!--              <i class="fas fa-minus"></i>-->
+<!--            </button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="card-body">-->
+<!--        Référence : <h6 th:text="${ref}" class="text-bold"/>-->
+<!--        <table id="example1" class="table table-bordered table-striped">-->
+<!--          <thead>-->
+<!--          <tr>-->
+<!--            <th>Jan</th>-->
+<!--            <th>Fev</th>-->
+<!--            <th>Mars</th>-->
+<!--            <th>Avr</th>-->
+<!--            <th>Mai</th>-->
+<!--            <th>Juin</th>-->
+<!--            <th>Juil</th>-->
+<!--            <th>Aout</th>-->
+<!--            <th>Sept</th>-->
+<!--            <th>Oct</th>-->
+<!--            <th>Nov</th>-->
+<!--            <th>Dec</th>-->
+
+<!--          </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
+<!--          <tr >-->
+<!--            <td  th:each="stat:${stats}" th:text="${stat}"/>-->
+<!--          </tr>-->
+<!--          </tbody>-->
+<!--          <tfoot>-->
+<!--          <tr>-->
+<!--            <th>Jan</th>-->
+<!--            <th>Fev</th>-->
+<!--            <th>Mars</th>-->
+<!--            <th>Avr</th>-->
+<!--            <th>Mai</th>-->
+<!--            <th>Juin</th>-->
+<!--            <th>Juil</th>-->
+<!--            <th>Aout</th>-->
+<!--            <th>Sept</th>-->
+<!--            <th>Oct</th>-->
+<!--            <th>Nov</th>-->
+<!--            <th>Dec</th>-->
+<!--          </tr>-->
+<!--          </tfoot>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; /.card &ndash;&gt;-->
+<!--    </div>-->
+    <div class="">
+
+      <div class="card card-danger">
+        <div class="card-header">
+          <h3 class="card-title">ARTICLES EN RUPTURES :</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <table id="example2" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>libellé</th>
+              <th>catégorie</th>
+              <th>Quantité en stock</th>
+              <th>Quantité Seuil</th>
+
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="article:${articles}">
+              <td th:text="${article.libelle}"/>
+              <td th:text="${article.categorie.designation}"></td>
+              <td th:text="${article.qteStock}"class="text text-danger text-bold"/>
+              <td th:text="${article.qteSeuil}" />
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+              <th>libellé</th>
+              <th>catégorie</th>
+              <th>Quantité en stock</th>
+              <th>Quantité Seuil</th>
+            </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+  </div>
+</section>
+<section layout:fragment="script">
+  <script th:src="@{/admin/plugins/datatables/jquery.dataTables.min.js}"></script>
+  <script th:src="@{/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js}"></script>
+  <script th:src="@{/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js}"></script>
+  <script th:src="@{/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>
+  <script th:src="@{/admin/plugins/datatables-buttons/js/dataTables.buttons.min.js}"></script>
+  <script th:src="@{/admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js}"></script>
+  <script th:src="@{/admin/plugins/jszip/jszip.min.js}"></script>
+  <script th:src="@{/admin/plugins/pdfmake/pdfmake.min.js}"></script>
+  <script th:src="@{/admin/plugins/pdfmake/vfs_fonts.js}"></script>
+  <script th:src="@{/admin/plugins/datatables-buttons/js/buttons.html5.min.js}"></script>
+  <script th:src="@{/admin/plugins/datatables-buttons/js/buttons.print.min.js}"></script>
+  <script th:src="@{/admin/plugins/datatables-buttons/js/buttons.colVis.min.js}"></script>
+
+  <!-- Page specific script -->
+  <script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+</section>
+</body>
+</html>

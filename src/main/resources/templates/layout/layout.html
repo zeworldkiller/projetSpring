@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<!-- Mirrored from warehouse-admin-dashboard.multipurposethemes.com/main/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 12 Mar 2022 23:32:11 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://warehouse-admin-dashboard.multipurposethemes.com/images/favicon.ico">
+
+    <title>gestion</title>
+
+
+
+
+    <!-- Vendors Style-->
+    <link rel="stylesheet" th:href="@{/layout/css/vendors_css.css}">
+
+    <!-- Style-->
+    <link rel="stylesheet" th:href="@{/layout/css/style.css}">
+    <link rel="stylesheet" th:href="@{/layout/css/skin_color.css}">
+
+</head>
+
+<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
+
+<div class="wrapper">
+    <div id="loader"></div>
+
+    <header class="main-header">
+        <div class="d-flex align-items-center logo-box justify-content-start">
+            <!-- Logo -->
+            <a href="index-2.html" class="logo">
+                <!-- logo-->
+<!--                <div class="logo-mini w-50">-->
+<!--                    <span class="light-logo"><img src="../images/logo-letter.png" alt="logo"></span>-->
+<!--                    <span class="dark-logo"><img src="../images/logo-letter.png" alt="logo"></span>-->
+<!--                </div>-->
+<!--                <div class="logo-lg">-->
+<!--                    <span class="light-logo"><img src="../images/logo-light-text.png" alt="logo"></span>-->
+<!--                    <span class="dark-logo"><img src="../images/logo-light-text.png" alt="logo"></span>-->
+<!--                </div>-->
+            </a>
+        </div>
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-static-top">
+            <!-- Sidebar toggle button-->
+            <div class="app-menu">
+                <ul class="header-megamenu nav">
+                    <li class="btn-group nav-item">
+                        <a href="#" class="waves-effect waves-light nav-link push-btn btn-primary-light" data-toggle="push-menu" role="button">
+                            <i data-feather="align-left"></i>
+                        </a>
+                    </li>
+                    <li class="btn-group d-lg-inline-flex d-none">
+                        <div class="app-menu">
+                            <div class="search-bx mx-5">
+                                <form>
+                                    <div class="input-group">
+                                        <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon3">
+                                        <div class="input-group-append">
+                                            <button class="btn" type="submit" id="button-addon3"><i data-feather="search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="navbar-custom-menu r-side">
+                <ul class="nav navbar-nav">
+                    <li class="btn-group nav-item d-xl-inline-flex d-none">
+                        <a th:href="@{/}" class="waves-effect waves-light nav-link w-p100 full-screen btn-primary-light fs-18 l-h-26">
+                            Accueil
+                        </a>
+                    </li>
+
+
+
+                  </ul>
+            </div>
+        </nav>
+    </header>
+
+    <aside class="main-sidebar">
+        <!-- sidebar-->
+        <section class="sidebar position-relative">
+            <div class="multinav">
+                <div class="multinav-scroll" style="height: 100%;">
+                    <!-- sidebar menu-->
+                    <ul class="sidebar-menu" data-widget="tree">
+                        <li class="treeview">
+                            <a href="#">
+                                <i data-feather="monitor"></i>
+                                <span>categorie</span>
+                                <span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="nav-item">
+                                    <a th:href="@{/categorie/create}" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Créer une catégorie </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a th:href="@{/categorie/}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Liste des Catégories</p>
+                                    </a>
+                                </li></ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i data-feather="monitor"></i>
+                                <span>Gestion d'Article</span>
+                                <span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="nav-item">
+                                    <a th:href="@{/article/}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Liste des Articles </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a th:href="@{/article/create}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Ajouter un Article</p>
+                                    </a>
+                                </li></ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i data-feather="monitor"></i>
+                                <span>Gestion d'Approvisionnement</span>
+                                <span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="nav-item">
+                                    <a th:href="@{/approvisionnement/}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Liste des Approvisionnements </p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a th:href="@{/approvisionnement/aapprovisionner}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Liste des Articles A Approvisionner</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i data-feather="monitor"></i>
+                                <span>Gestion de Vente </span>
+                                <span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="nav-item">
+                                    <a th:href="@{/vente/}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Faire une vente</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a th:href="@{/vente/liste}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Liste des ventes</p>
+                                    </a>
+                                </li></ul>
+                        </li>
+
+                    </ul>
+
+                    <div class="sidebar-widgets">
+                        <div class="copyright text-center m-25 text-white-50">
+                            <p><strong class="d-block">Gestion stock yaro && late</strong> © <script>document.write(new Date().getFullYear())</script> All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <div class="container-full">
+            <!-- Main content -->
+            <section layout:fragment="content">
+                <p>Common layout:fragment app-content section > p</p>
+            </section>
+            <!-- /.content -->
+        </div>
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="pull-right d-none d-sm-inline-block">
+            <ul class="nav nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Purchase Now</a>
+                </li>
+            </ul>
+        </div>
+        &copy; <script>document.write(new Date().getFullYear())</script> <a href="https://www.multipurposethemes.com/">Multipurpose Themes</a>. All Rights Reserved.
+    </footer>
+
+<!--   -->
+
+    <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- ./side demo panel -->
+<!-- Page Content overlay -->
+
+
+<!-- Vendor JS -->
+<script th:src="@{/layout/js/vendors.min.js}"></script>
+<script th:src="@{/layout/js/pages/chat-popup.js}"></script>
+<script th:src="@{/layout/assets/icons/feather-icons/feather.min.js}"></script>
+
+<script th:src="@{/layout/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js}"></script>
+<script th:src="@{/layout/assets/vendor_components/progressbar.js-master/dist/progressbar.js}"></script>
+<script>
+		document.getElementById('e').value = new Date().toISOString().substring(0, 10);
+	</script>
+
+<!-- Deposito Admin App -->
+<script th:src="@{/layout/js/template.js}"></script>
+<script th:src="@{/layout/js/pages/dashboard.js}"></script>
+
+<section  layout:fragment="script">
+
+</section>
+
+</body>
+
+<!-- Mirrored from warehouse-admin-dashboard.multipurposethemes.com/main/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 12 Mar 2022 23:33:14 GMT -->
+</html>

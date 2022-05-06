@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section  layout:fragment="text">
+    <h1 class="m-0">Vente</h1>
+</section>
+<section layout:fragment="content">
+    <div class="row">
+        <div class="col-md-6">
+         <div class="card card-success" >
+             <div class="card-header">
+                 <h3 class="card-title">Articles</h3>
+
+                 <div class="card-tools">
+                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                         <i class="fas fa-minus"></i>
+                     </button>
+                 </div>
+             </div>
+         </div>
+            <div class="card-body">
+               Référence : <h6 th:text="${ref}" class="text-bold"/>
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>libellé</th>
+                        <th>prix</th>
+                        <th>Quantité en stock</th>
+                        <th>Quantité</th>
+                        <th>Actions</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="article:${articles}">
+                        <td th:text="${article.libelle}"/>
+                        <td th:text="${article.prix}"/>
+                        <td th:text="${article.qteStock}"/>
+                        <form th:action="@{/vente/{ref}(ref=${ref})}" method="post">
+                                <input type="hidden"  th:value="${article.id}" name="articleId"/>
+                                <input type="hidden"  th:value="${article.prix}" name="prix"/>
+                        <td>  <input type="number" class="form-control" name="qte"></td>
+                        <td class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-success btn-sm">Ajouter </button>
+                       </td>
+                        </form>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>libellé</th>
+                        <th>prix</th>
+                        <th>Quantité en stock</th>
+                        <th>Quantité</th>
+                        <th>Actions</th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- /.card -->
+        </div>
+        <div class="col-md-6">
+
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Vente</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>article</th>
+                                <th>quantite</th>
+                                <th>total</th>
+                                <th>Actions</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="vente:${ventes}">
+                                <td th:text="${vente.article.libelle}"/>
+                                <td th:text="${vente.qte}"/>
+                                <td th:text="${vente.total}"/>
+                                <td class="d-flex justify-content-between">
+                                    <a th:href="@{/vente/delete/{id}(id=${vente.id})}" class="btn btn-danger btn-sm">Annuler </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <th>article</th>
+                                <th>quantite</th>
+                                <th>total</th>
+                                <th>Actions</th>
+
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+               <div>
+                   <h3>TOTAL :</h3>
+                   <h2 th:text="${total}" class="text-danger"/>
+               </div>
+
+
+
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
+</section>
+<section layout:fragment="script">
+    <script th:src="@{/admin/plugins/datatables/jquery.dataTables.min.js}"></script>
+    <script th:src="@{/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js}"></script>
+    <script th:src="@{/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js}"></script>
+    <script th:src="@{/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>
+    <script th:src="@{/admin/plugins/datatables-buttons/js/dataTables.buttons.min.js}"></script>
+    <script th:src="@{/admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js}"></script>
+    <script th:src="@{/admin/plugins/jszip/jszip.min.js}"></script>
+    <script th:src="@{/admin/plugins/pdfmake/pdfmake.min.js}"></script>
+    <script th:src="@{/admin/plugins/pdfmake/vfs_fonts.js}"></script>
+    <script th:src="@{/admin/plugins/datatables-buttons/js/buttons.html5.min.js}"></script>
+    <script th:src="@{/admin/plugins/datatables-buttons/js/buttons.print.min.js}"></script>
+    <script th:src="@{/admin/plugins/datatables-buttons/js/buttons.colVis.min.js}"></script>
+
+    <!-- Page specific script -->
+    <script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+</section>
+</body>
+</html>

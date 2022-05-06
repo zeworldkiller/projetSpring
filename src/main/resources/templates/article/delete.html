@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section  layout:fragment="text">
+    <h1 class="m-0">Suppression Article</h1>
+</section>
+<section layout:fragment="content" >
+    <div class="d-flex justify-content-center mt-3">
+
+
+        <div class="col-9">
+            <div class="card card-danger">
+                <div class="card-header">
+                    <h3 class="card-title">Voulez vous vraiment Supprimez l'Article ? :</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form th:action="@{/article/destroy}" th:object="${oneArticle}"  method="post">
+                    <input th:field="*{id}" type="hidden"/>
+                    <input th:field="*{dateCreation}" type="hidden"/>
+                    <input th:field="*{qteStock}" type="hidden"/>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="designation">Libellé :</label>
+                            <input id="designation" th:field="*{libelle}" type="text" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="qteSeuil">Quantité Seuil :</label>
+                            <input id="qteSeuil" type="number" class="form-control " th:field="*{qteSeuil}">
+                        </div>
+                        <div class="form-group">
+                            <label for="prix">Prix  :</label>
+                            <input id="prix" type="number" class="form-control" th:field="*{prix}">
+                        </div>
+                        <div class="form-group">
+                            <label for="categorie">Catégorie :</label>
+                            <select th:field="*{categorieId}" id="categorie" class="form-control" name="categorieId" required  placeholder="Cliquer pour chercher" >
+
+                                <option th:each="categorie:${categories}"
+                                        th:value="${categorie.id}"
+                                        th:text="${categorie.designation}">
+                                </option>
+                            </select>
+                        </div>
+
+
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-danger btn-lg">Suppression</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
